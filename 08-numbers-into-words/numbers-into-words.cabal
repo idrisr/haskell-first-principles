@@ -1,0 +1,56 @@
+cabal-version:      3.0
+name:               numbers-into-words
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+author:             Idris Raja
+maintainer:         idris.raja@gmail.com
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+common language
+    default-language: Haskell2010
+
+library
+    import:           warnings, language
+    exposed-modules:  WordNumber
+    build-depends:    base ^>=4.16.4.0
+    hs-source-dirs:   src
+
+executable enumfun
+    import:           warnings, language
+    main-is:          EnumFun.hs
+    build-depends:
+        base ^>=4.16.4.0,
+    hs-source-dirs:   app
+
+executable applyfun
+    import:           warnings, language
+    main-is:          Apply.hs
+    build-depends:
+        base ^>=4.16.4.0,
+    hs-source-dirs:   app
+
+executable numbers-into-words
+    import:           warnings, language
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0,
+        numbers-into-words
+    hs-source-dirs:   app
+
+test-suite testsuite
+    import:           warnings, language
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test,
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0,
+        numbers-into-words,
+        tasty,
+        tasty-hunit,
+        tasty-quickcheck,
+        tasty-smallcheck
