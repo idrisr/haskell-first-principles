@@ -16,7 +16,11 @@ common language
 
 library
     import:           warnings, language
-    exposed-modules:  WordNumber, CurryReview, Recursion, Division
+    exposed-modules:  WordNumber,
+                      CurryReview,
+                      Recursion,
+                      Division,
+                      McCarthy91
     build-depends:    base ^>=4.16.4.0
     hs-source-dirs:   src
 

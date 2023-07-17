@@ -3,11 +3,13 @@ module Main (main) where
 import Recursion
 import CurryReview
 import Division
+import McCarthy91
+
 import Test.Tasty.HUnit
 import Test.Tasty
 
 tests :: TestTree
-tests = testGroup "tests" [unitTests, unitTests2, unitTests3]
+tests = testGroup "tests" [unitTests, unitTests2, unitTests3, unitTests4]
 
 unitTests::TestTree
 unitTests = testGroup "Currying"
@@ -41,6 +43,12 @@ unitTests3 = testGroup "DividedBy"
   testCase "" $ (-10::Integer) `dividedBy` 0 @?= DivideByZero,
   testCase "" $ (10::Integer) `dividedBy` 0 @?= DivideByZero,
   testCase "" $ (0::Integer) `dividedBy` 0 @?= DivideByZero
+  ]
+
+unitTests4 :: TestTree
+unitTests4 = testGroup "McCarthy91"
+  [
+  testCase "" $ map mccarthy91 [(95::Integer)..110] @?= [91,91,91,91,91,91,91,92,93,94,95,96,97,98, 99,100]
   ]
 
 main :: IO ()
