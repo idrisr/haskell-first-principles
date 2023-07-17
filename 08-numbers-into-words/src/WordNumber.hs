@@ -1,12 +1,13 @@
 module WordNumber where
 
-import Data.List (intersperse)
-
-digitToWord :: Int -> String
-digitToWord _ = undefined
+import Data.Char (digitToInt)
+import Data.List (intercalate)
 
 digits :: Int -> [Int]
-digits _ = undefined
+digits = map digitToInt . show
+
+digitToWord :: Int -> String
+digitToWord n = intercalate "-" $ map wordNumber $ digits n
 
 wordNumber :: Int -> String
 wordNumber 0 = "zero"

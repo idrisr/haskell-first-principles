@@ -33,9 +33,10 @@ executable enumfun
 
 executable div
     import:           warnings, language
-    main-is:          Division.hs
+    main-is:          Main.hs
     build-depends:
         base ^>=4.16.4.0,
+        numbers-into-words
     hs-source-dirs:   app
 
 executable applyfun
