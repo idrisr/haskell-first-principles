@@ -16,13 +16,20 @@ common language
 
 library
     import:           warnings, language
-    exposed-modules:  WordNumber
+    exposed-modules:  WordNumber, CurryReview, Recursion, Division
     build-depends:    base ^>=4.16.4.0
     hs-source-dirs:   src
 
 executable enumfun
     import:           warnings, language
     main-is:          EnumFun.hs
+    build-depends:
+        base ^>=4.16.4.0,
+    hs-source-dirs:   app
+
+executable div
+    import:           warnings, language
+    main-is:          Division.hs
     build-depends:
         base ^>=4.16.4.0,
     hs-source-dirs:   app
@@ -53,4 +60,5 @@ test-suite testsuite
         tasty,
         tasty-hunit,
         tasty-quickcheck,
-        tasty-smallcheck
+        tasty-smallcheck,
+        tasty-hspec
