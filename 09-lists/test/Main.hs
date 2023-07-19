@@ -5,13 +5,15 @@ import Test.QuickCheck (Arbitrary (..), choose, quickCheck)
 import Test.Tasty
 import Test.Tasty.HUnit
 import Test.Tasty.QuickCheck (testProperty, (==>))
+import TestCipher
 import TestComprehension
 import TestSquareCube
+import TestStdFunc
 import TestWords
 import TestZip
 
 tests :: TestTree
-tests = testGroup "tests" [testTree, wordTests, testComprehension, testCube, qcProps]
+tests = testGroup "tests" [testTree, wordTests, testComprehension, testCube, qcProps, cipherProps, stdFuncProps]
 
 -- QuickCheck property
 property :: (Enum a, Eq a) => (a -> a -> [a]) -> a -> a -> Bool
@@ -28,5 +30,5 @@ testTree =
         ]
 
 main :: IO ()
-main =  do
+main = do
     defaultMain tests
