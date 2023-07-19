@@ -18,7 +18,13 @@ common common
 
 library
     import:           common
-    exposed-modules:  Cipher, EnumDef
+    exposed-modules:  Cipher,
+                      EnumDef,
+                      Words,
+                      Comprehension,
+                      SquareCube,
+                      Bottom,
+                      Zip
     hs-source-dirs:   lib
     default-language: Haskell2010
 
@@ -32,6 +38,10 @@ executable ch09
 test-suite ch09-test
     import:           common
     default-language: Haskell2010
+    other-modules:    TestWords
+                    , TestComprehension
+                    , TestSquareCube
+                    , TestZip
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs
@@ -41,4 +51,6 @@ test-suite ch09-test
         tasty-quickcheck,
         tasty-smallcheck,
         tasty-hspec,
-        QuickCheck
+        QuickCheck,
+        hspec,
+        deepseq
