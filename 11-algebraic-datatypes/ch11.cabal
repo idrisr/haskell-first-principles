@@ -1,0 +1,49 @@
+cabal-version:      3.0
+name:               ch11
+version:            0.1.0.0
+license:            MIT
+
+license-file:       LICENSE
+author:             Idris Raja
+maintainer:         idris.raja@gmail.com
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+        -Wno-unused-top-binds
+        -Wno-missing-signatures
+        -Wno-unused-imports
+    build-depends:    base ^>=4.16.4.0
+
+library
+    import:           warnings
+    exposed-modules:  Datatype
+                    , Newtype
+                    , Algebra
+                    , NormalForm
+                    , ConDeStruct
+                    , BinaryTree
+                    , Doge
+                    , Programmers
+    hs-source-dirs:   lib
+    default-language: Haskell2010
+
+executable ch11
+    import:           warnings
+    main-is:          11-datatype.hs
+    build-depends:    ch11
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite tests
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    other-modules:    TestBinaryTree
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:    ch11
+                    , tasty
+                    , tasty-quickcheck
+                    , tasty-hunit
