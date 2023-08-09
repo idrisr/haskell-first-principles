@@ -24,12 +24,12 @@ x3 :: [Int]
 x3 = foldr (:) [] [1..3]
 
 myFoldr :: (a -> b -> b) -> b -> [a] -> b
-myFoldr _ b [] = b
-myFoldr g b (x:xs) = g x $ myFoldr g b xs
+myFoldr _ b []  = b
+myFoldr f b (x:xs) = f x $ myFoldr f b xs
 
-myFoldl :: (a -> b -> a) -> a -> [b] -> a
-myFoldl _ a [] = a
-myFoldl g b (x:xs) = myFoldl g (g b x) xs
+myFoldl :: (b -> a -> b) -> b -> [a] -> b
+myFoldl _ b []  = b
+myFoldl f b (x:xs) = myFoldl f (f b x) xs
 
 j :: [Int]
 j = foldr (:) [] [1..10]

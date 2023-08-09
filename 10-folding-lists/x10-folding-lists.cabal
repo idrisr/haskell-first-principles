@@ -9,15 +9,18 @@ build-type:         Simple
 extra-doc-files:    CHANGELOG.md
 
 common common
-    ghc-options: -Wall
+    ghc-options: -Wall -Wno-missing-signatures
     default-language: Haskell2010
 
 library
     import:           common
-    exposed-modules:  MyLib
-                     , FoldExamples
+    exposed-modules:  FoldExamples
                      , UnderstandingFolds
+                     , Database
+                     , WarmupAndReview
+                     , FoldPractice
     build-depends:    base ^>=4.16.4.0
+                    , time
     hs-source-dirs:   src
 
 executable main
@@ -34,6 +37,7 @@ test-suite tests
     hs-source-dirs:   test
     main-is:          Main.hs
     other-modules:    TestUnderstandingFolds
+                    , TestFoldPractice
     build-depends:
         base ^>=4.16.4.0
         , folds
