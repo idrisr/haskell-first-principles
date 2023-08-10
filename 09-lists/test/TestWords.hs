@@ -1,9 +1,7 @@
 module TestWords where
 
-import Test.QuickCheck (Arbitrary (..), choose, quickCheck)
 import Test.Tasty
 import Test.Tasty.HUnit
-import Test.Tasty.QuickCheck (testProperty, (==>))
 import Words
 
 wordTests :: TestTree

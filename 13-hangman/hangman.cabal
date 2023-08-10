@@ -1,0 +1,29 @@
+cabal-version:       3.0
+name:                hangman
+version:             0.1.0.0
+
+common common
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+
+library
+    import: common
+    hs-source-dirs:      src
+    exposed-modules: Hangman
+    build-depends: random
+                , split
+                , hspec
+
+executable hangman
+  import: common
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  build-depends: hangman
+
+test-suite hangtest
+  import: common
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  type: exitcode-stdio-1.0
+  build-depends: hangman
+      , hspec
