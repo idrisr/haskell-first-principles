@@ -1,0 +1,50 @@
+cabal-version:      3.0
+name:               monoid-semigroup
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+author:             Idris Raja
+maintainer:         idris.raja@gmail.com
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+    default-language: Haskell2010
+
+library
+    import:           warnings
+    exposed-modules:  MyLib
+                    , Optional
+                    , Bull
+                    , First
+                    , Semigroup
+    build-depends:    base ^>=4.16.4.0
+                    , QuickCheck
+    hs-source-dirs:   src
+
+executable exe
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0,
+        monoid-semigroup
+    hs-source-dirs:   app
+
+test-suite tests
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    other-modules:    TestOptional
+                    , TestFirst
+                    , TestBull
+                    , TestSemigroup
+                    , TestMonoid
+                    , Properties
+    build-depends:
+        base ^>=4.16.4.0
+      , monoid-semigroup
+      , tasty
+      , tasty-quickcheck
+      , tasty-hunit
