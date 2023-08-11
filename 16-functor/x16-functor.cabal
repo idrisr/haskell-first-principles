@@ -1,0 +1,47 @@
+cabal-version:      3.0
+name:               x16
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+author:             Idris Raja
+maintainer:         idris.raja@gmail.com
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Funcs
+                    , HeavyLifting
+                    , Instances
+                    , Rearrange
+    build-depends:    base ^>=4.16.4.0
+                    , QuickCheck
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable x16-functor
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0,
+        x16
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite tests
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    other-modules:    FuncsTest
+                    , HeavyLiftingTest
+    build-depends:
+        base ^>=4.16.4.0
+        , x16
+        , tasty
+        , tasty-quickcheck
+        , tasty-hunit
