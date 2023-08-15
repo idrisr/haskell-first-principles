@@ -1,17 +1,26 @@
-module NopeTest where
+module BahEitherTest (bahEitherTests) where
 
 import Data.Monoid
-import Nope
 import Test.QuickCheck.Checkers
 import Test.QuickCheck.Classes
 import Test.Tasty
 import Test.Tasty.QuickCheck
+import BahEither
 
-nopeTests :: TestTree
-nopeTests = testGroup "Nope" [functorTests, applicativeTests, monadTests]
+bahEitherTests :: TestTree
+bahEitherTests =
+    testGroup
+        "BahEither"
+        [ functorTests
+        , applicativeTests
+        , monadTests
+        ]
 
-xs :: Nope (String, Sum Int, Product Int)
-xs = NopeDotJpg
+xs ::
+    BahEither
+        (String, Sum Int, Product Int)
+        (Sum Int, Product Int, String)
+xs = PLeft (10, 11, "we")
 
 functorTests :: TestTree
 functorTests =
