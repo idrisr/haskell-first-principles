@@ -4,6 +4,7 @@ import Test.Tasty
 import BadMonadTest
 import BahEitherTest
 import NopeTest
+import IdentityTest
 
 main :: IO ()
 main =
@@ -11,6 +12,7 @@ main =
         testGroup
             "main"
             [ badMonadTests
-            , nopeTests
             , bahEitherTests
+            , identityTests
+            , nopeTests
             ]

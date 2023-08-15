@@ -19,6 +19,7 @@ library
                     , Kleisli
                     , Nope
                     , BahEither
+                    , Identity
     build-depends:    base ^>=4.16.4.0
                     , checkers
                     , QuickCheck
@@ -40,6 +41,7 @@ test-suite tests
     other-modules:    BadMonadTest
                     , NopeTest
                     , BahEitherTest
+                    , IdentityTest
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs
