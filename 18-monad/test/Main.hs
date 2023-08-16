@@ -6,6 +6,7 @@ import BahEitherTest
 import NopeTest
 import IdentityTest
 import ListTest
+import FuncsTest
 
 main :: IO ()
 main =
@@ -17,4 +18,5 @@ main =
             , identityTests
             , nopeTests
             , listTests
+            , funcsTests
             ]

@@ -21,6 +21,7 @@ library
                     , BahEither
                     , Identity
                     , List
+                    , Funcs
     build-depends:    base ^>=4.16.4.0
                     , checkers
                     , QuickCheck
@@ -44,6 +45,7 @@ test-suite tests
                     , BahEitherTest
                     , IdentityTest
                     , ListTest
+                    , FuncsTest
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs
