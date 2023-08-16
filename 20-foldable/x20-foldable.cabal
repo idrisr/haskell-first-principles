@@ -1,0 +1,49 @@
+cabal-version:      3.0
+name:               x20
+version:            0.1.0.0
+license:            MIT
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Foldz
+                    , LibFuncs
+                    , Constant
+                    , Two
+                    , Three
+                    , Three1
+                    , Four1
+    build-depends:    base ^>=4.16.4.0
+                    , tasty-quickcheck
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+test-suite tests
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    other-modules:    LibFuncsTest
+                    , MinimumTests
+                    , MaximumTests
+                    , ElemTests
+                    , NullTests
+                    , LengthTests
+                    , ToListTests
+                    , ConstantTests
+                    , TwoTests
+                    , ThreeTests
+                    , Three1Tests
+                    , Four1Tests
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0
+      , x20
+      , tasty
+      , tasty-hunit
+      , tasty-quickcheck
+      , checkers
+      , safe
