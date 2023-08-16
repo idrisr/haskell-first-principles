@@ -20,6 +20,7 @@ library
                     , Nope
                     , BahEither
                     , Identity
+                    , List
     build-depends:    base ^>=4.16.4.0
                     , checkers
                     , QuickCheck
@@ -42,6 +43,7 @@ test-suite tests
                     , NopeTest
                     , BahEitherTest
                     , IdentityTest
+                    , ListTest
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs

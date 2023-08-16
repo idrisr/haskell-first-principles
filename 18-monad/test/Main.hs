@@ -5,6 +5,7 @@ import BadMonadTest
 import BahEitherTest
 import NopeTest
 import IdentityTest
+import ListTest
 
 main :: IO ()
 main =
@@ -15,4 +16,5 @@ main =
             , bahEitherTests
             , identityTests
             , nopeTests
+            , listTests
             ]
