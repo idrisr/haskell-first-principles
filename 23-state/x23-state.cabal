@@ -1,0 +1,48 @@
+cabal-version:      3.0
+name:               x23
+version:            0.1.0.0
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Starter
+                    , Dice
+                    , Moi
+                    , Exercise
+    build-depends:
+        base ^>=4.16.4.0
+      , random
+      , transformers
+      , tasty
+      , tasty-quickcheck
+      , checkers
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable exe
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0
+      , x23
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite tests
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    other-modules:    MoiTest
+                    , ExerciseTest
+    build-depends:
+        base ^>=4.16.4.0
+      , x23
+      , tasty
+      , tasty-quickcheck
+      , tasty-hunit
+      , checkers
