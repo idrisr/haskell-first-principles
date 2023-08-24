@@ -1,0 +1,72 @@
+cabal-version:      3.0
+name:               x24
+version:            0.1.0.0
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:
+                      AltParsing
+                      BT
+                      Data.Ini
+                      EarlyTrans
+                      LearnParsers
+                      Marshalling
+                      NumberStringy
+                      SemVer
+                      Text.Fraction
+                      Token
+                      Try
+    build-depends:
+        base ^>=4.16.4.0
+        , aeson
+        , attoparsec
+        , bytestring
+        , containers
+        , parsec
+        , raw-strings-qq
+        , scientific
+        , text
+        , transformers
+        , trifecta
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable exe
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0
+      , x24
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite tests
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    other-modules:
+        Data.IniTest
+        EarlyTransTest
+        FractionTests
+        FreeJazzTest
+        SemVerTest
+        TokenTest
+        TryTest
+        Util
+    build-depends:
+        base ^>=4.16.4.0
+      , bytestring
+      , containers
+      , tasty
+      , tasty-expected-failure
+      , tasty-hunit
+      , tasty-quickcheck
+      , transformers
+      , trifecta
+      , x24
