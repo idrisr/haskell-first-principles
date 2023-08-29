@@ -2,9 +2,16 @@ module BabyStepTest (babyStepTests) where
 
 import Test.Tasty
 import Test.Tasty.HUnit
+import Data.Maybe
 
 babyStepTests :: TestTree
-babyStepTests = testGroup "BabySteps" [unitTests1, unitTests2]
+babyStepTests =
+    testGroup
+        "BabySteps"
+        [ unitTests1
+        , unitTests2
+        , unitTests3
+        ]
 
 unitTests1 :: TestTree
 unitTests1 =
@@ -85,4 +92,17 @@ unitTests2 =
             wot = Nothing
            in
             testCase "k" $ wot @?= got
+        ]
+
+unitTests3 :: TestTree
+unitTests3 =
+    testGroup
+        "stuff"
+        [ let
+            xs :: [Maybe Integer]
+            xs = [Just 1, Just 2, Just 3]
+            got = catMaybes xs
+            wot = [1, 2, 3]
+           in
+            testCase "e" $ wot @?= got
         ]

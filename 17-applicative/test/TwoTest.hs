@@ -11,8 +11,7 @@ twoTests :: TestTree
 twoTests = testGroup "Two" [functorTests, applicativeTests]
 
 xs :: Two (String, Sum Int, Product Int) (String, Sum Int, Product Int)
-xs = Two a a
-    where a = ("YO", 10, 69)
+xs = undefined
 
 functorTests :: TestTree
 functorTests =

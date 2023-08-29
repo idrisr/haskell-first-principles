@@ -12,14 +12,7 @@ type G = (String, Product Int, Sum Int, Product Integer, Sum Int)
 type H = (Product Int, Sum Int, Product Integer, Sum Int, String)
 
 xs :: Three F G H
-xs = let
-    a :: F
-    a = (69, "YO", 420, 10, 5150)
-    b :: G
-    b = ("YO", 420, 10, 5150, 69)
-    c :: H
-    c = (420, 10, 5150, 69, "YO")
-    in Three a b c
+xs = undefined
 
 threeTests :: TestTree
 threeTests = testGroup "Three" [foldableTests]
