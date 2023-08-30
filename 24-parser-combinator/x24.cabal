@@ -9,17 +9,20 @@ common warnings
 library
     import:           warnings
     exposed-modules:
-                      AltParsing
-                      BT
-                      Data.Ini
-                      EarlyTrans
-                      LearnParsers
-                      Marshalling
-                      NumberStringy
-                      SemVer
-                      Text.Fraction
-                      Token
-                      Try
+        AltParsing
+        BT
+        Data.Ini
+        EarlyTrans
+        LearnParsers
+        LogFile
+        Marshalling
+        NumberStringy
+        Phone
+        PositiveInt
+        SemVer
+        Text.Fraction
+        Token
+        Try
     build-depends:
         base ^>=4.16.4.0
         , aeson
@@ -40,7 +43,18 @@ executable exe
     main-is:          Main.hs
     build-depends:
         base ^>=4.16.4.0
-      , x24
+        , x24
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+executable gpt
+    import:           warnings
+    main-is:          Gpt.hs
+    build-depends:
+        base ^>=4.16.4.0
+        , x24
+        , trifecta
+        , parsers
     hs-source-dirs:   app
     default-language: Haskell2010
 
@@ -55,18 +69,22 @@ test-suite tests
         EarlyTransTest
         FractionTests
         FreeJazzTest
+        LogFileTest
+        PositiveIntTest
+        PhoneTest
         SemVerTest
         TokenTest
         TryTest
         Util
     build-depends:
         base ^>=4.16.4.0
-      , bytestring
-      , containers
-      , tasty
-      , tasty-expected-failure
-      , tasty-hunit
-      , tasty-quickcheck
-      , transformers
-      , trifecta
-      , x24
+        , bytestring
+        , containers
+        , raw-strings-qq
+        , tasty
+        , tasty-expected-failure
+        , tasty-hunit
+        , tasty-quickcheck
+        , transformers
+        , trifecta
+        , x24

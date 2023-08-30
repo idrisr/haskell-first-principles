@@ -4,9 +4,12 @@ import Data.IniTest
 import EarlyTransTest
 import FractionTests
 import FreeJazzTest
+import PhoneTest
+import PositiveIntTest
+import SemVerTest
 import Test.Tasty
 import TokenTest
-import SemVerTest
+import LogFileTest
 
 tests :: TestTree
 tests =
@@ -18,6 +21,9 @@ tests =
         , iniTests
         , tokenTests
         , semVerTests
+        , posIntTests
+        , phoneTests
+        , logFileTests
         ]
 
 main :: IO ()

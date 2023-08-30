@@ -20,9 +20,25 @@ c = "123blah789"
 parseNos :: Parser NumberOrString
 parseNos = (Left <$> integer) <|> (Right <$> some letter)
 
+parseNos1 :: Parser NumberOrString
+parseNos1 =
+    skipMany (oneOf "\n")
+    >>
+    (Left <$> integer)
+    <|> (Right <$> some letter)
+
 eitherOr :: String
 eitherOr = [r|
 123
+
+abc
+456
+def
+|]
+
+eitherOr1 :: String
+eitherOr1 = [r|123
+
 abc
 456
 def
