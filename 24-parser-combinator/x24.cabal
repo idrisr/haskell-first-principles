@@ -13,6 +13,7 @@ library
         BT
         Data.Ini
         EarlyTrans
+        IPV4
         LearnParsers
         LogFile
         Marshalling
@@ -28,6 +29,7 @@ library
         , aeson
         , attoparsec
         , bytestring
+        , charset
         , containers
         , parsec
         , raw-strings-qq
@@ -70,6 +72,7 @@ test-suite tests
         FractionTests
         FreeJazzTest
         LogFileTest
+        IPV4Test
         PositiveIntTest
         PhoneTest
         SemVerTest

@@ -13,7 +13,7 @@ data NumberOrString
     deriving (Eq, Show)
 
 instance FromJSON NumberOrString where
-    parseJSON (Number i) = case floatingOrInteger i of
+    parseJSON (Number i) = case floatingOrInteger i::(Either Double Integer) of
         (Left _) -> fail "Must be integral number"
         (Right integer) -> return $ Numba integer
     parseJSON (String s) = return $ Stringy s
