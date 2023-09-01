@@ -58,8 +58,8 @@ parseDate = do
     _ <- char '-'
     m <- integer
     _ <- char '-'
-    d <- integer
-    _ <- option '_' newline
+    d <- decimal
+    _ <- manyTill anyChar $ char '\n'
     return (fromInteger y, fromInteger m, fromInteger d)
 
 parseActivity :: Parser Activity

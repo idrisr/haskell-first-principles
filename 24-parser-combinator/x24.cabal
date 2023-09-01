@@ -4,7 +4,7 @@ version:            0.1.0.0
 build-type:         Simple
 
 common warnings
-    ghc-options: -Wall
+    ghc-options: -Wall -Wno-name-shadowing
 
 library
     import:           warnings
@@ -14,6 +14,7 @@ library
         Data.Ini
         EarlyTrans
         IPV4
+        IPV6
         LearnParsers
         LogFile
         Marshalling
@@ -51,7 +52,7 @@ executable exe
 
 executable gpt
     import:           warnings
-    main-is:          Gpt.hs
+    main-is:          GPT.hs
     build-depends:
         base ^>=4.16.4.0
         , x24
@@ -73,6 +74,7 @@ test-suite tests
         FreeJazzTest
         LogFileTest
         IPV4Test
+        IPV6Test
         PositiveIntTest
         PhoneTest
         SemVerTest

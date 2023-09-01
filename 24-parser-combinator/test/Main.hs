@@ -5,6 +5,7 @@ import EarlyTransTest
 import FractionTests
 import FreeJazzTest
 import IPV4Test
+import IPV6Test
 import LogFileTest
 import PhoneTest
 import PositiveIntTest
@@ -26,6 +27,7 @@ tests =
         , phoneTests
         , logFileTests
         , ipv4tests
+        , ipv6tests
         ]
 
 main :: IO ()

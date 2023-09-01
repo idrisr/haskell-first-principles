@@ -23,19 +23,18 @@ dateTests :: TestTree
 dateTests =
     testGroup
         "Date"
-        [
-            let sut = "# 2025-02-05"
-                got = parseString parseDate mempty sut
-                wot = Just (2025, 02, 05) in
-                testCase "" $ maybeSuccess got @?= wot
-          , let sut = "# 2025-02-07"
-                got = parseString parseDate mempty sut
-                wot = Just (2025, 02, 07) in
-                testCase "" $ maybeSuccess got @?= wot
-          , let sut = "# 2025-02-07 -- dates not nececessarily sequential"
-                got = parseString parseDate mempty sut
-                wot = Just (2025, 02, 07) in
-                testCase "" $ maybeSuccess got @?= wot
+        [ let sut = "# 2025-02-05\n"
+              got = parseString parseDate mempty sut
+              wot = Just (2025, 02, 05)
+           in testCase "" $ maybeSuccess got @?= wot
+        , let sut = "# 2025-02-07\n"
+              got = parseString parseDate mempty sut
+              wot = Just (2025, 02, 07)
+           in testCase "" $ maybeSuccess got @?= wot
+        , let sut = "# 2025-02-07 -- dates not nececessarily sequential\n"
+              got = parseString parseDate mempty sut
+              wot = Just (2025, 02, 07)
+           in testCase "" $ maybeSuccess got @?= wot
         ]
 
 entryTests :: TestTree
@@ -71,14 +70,22 @@ dayTests =
         [ let sut = day1
               got = parseString parseDay mempty sut
               date = (2025, 02, 05)
-              entries = [
-                    Entry (8, 0) "Breakfast" ""
-                  , Entry (9, 0) "Sanitizing moisture collector" ""
-                  ]
+              entries =
+                [ Entry (8, 0) "Breakfast" ""
+                , Entry (9, 0) "Sanitizing moisture collector" ""
+                ]
               wot = Just $ Day date entries
-           in testCase "" $ maybeSuccess got @?= wot
+           in testCase (displayResult got) $ maybeSuccess got @?= wot
+        , let sut = day2
+              got = parseString parseDay mempty sut
+              date = (2025, 02, 05)
+              entries =
+                [ Entry (8, 0) "Breakfast" ""
+                , Entry (9, 0) "Sanitizing moisture collector" ""
+                ]
+              wot = Just $ Day date entries
+           in testCase (displayResult got) $ maybeSuccess got @?= wot
         ]
-
 
 fileTests :: TestTree
 fileTests =
@@ -117,8 +124,8 @@ fileTests =
             [ let sut = file0
                   got = parseString parseFile mempty sut
                in testCase "0" $ maybeSuccess got @?= wot
-               -- need to fix date with comments to consume rest of line
-            , let sut = file1
+            , -- need to fix date with comments to consume rest of line
+              let sut = file1
                   got = parseString parseFile mempty sut
                in testCase "1" $ maybeSuccess got @?= wot
             , let sut = file2
@@ -130,7 +137,8 @@ fileTests =
             ]
 
 day :: String
-day = [r|
+day =
+    [r|
 # 2025-02-05
 08:00 Breakfast
 09:00 Sanitizing moisture collector
@@ -145,13 +153,22 @@ day = [r|
 22:00 Sleep|]
 
 day1 :: String
-day1 = [r|
+day1 =
+    [r|
 # 2025-02-05
 08:00 Breakfast
 09:00 Sanitizing moisture collector|]
 
+day2 :: String
+day2 =
+    [r|
+# 2025-02-05     -- this is a comment
+08:00 Breakfast
+09:00 Sanitizing moisture collector|]
+
 file0 :: String
-file0 = [r|
+file0 =
+    [r|
 # 2025-02-05
 08:00 Breakfast
 09:00 Sanitizing moisture collector
@@ -178,7 +195,8 @@ file0 = [r|
 22:00 Sleep|]
 
 file1 :: String
-file1 = [r|
+file1 =
+    [r|
 # 2025-02-05
 08:00 Breakfast
 09:00 Sanitizing moisture collector
@@ -205,7 +223,8 @@ file1 = [r|
 22:00 Sleep|]
 
 file2 :: String
-file2 = [r|
+file2 =
+    [r|
 # 2025-02-05
 08:00 Breakfast
 09:00 Sanitizing moisture collector
@@ -231,7 +250,8 @@ file2 = [r|
 22:00 Sleep|]
 
 file3 :: String
-file3 = [r|
+file3 =
+    [r|
 # 2025-02-05
 08:00 Breakfast
 09:00 Sanitizing moisture collector
