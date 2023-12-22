@@ -1,10 +1,10 @@
 module LibFuncsTest (funcTests) where
-import LibFuncs
 
+import Data.Monoid
+import LibFuncs
 import Test.Tasty
 import Test.Tasty.HUnit
-import Data.Monoid
-import Prelude hiding (sum, product, elem)
+import Prelude hiding (elem, product, sum)
 
 funcTests :: TestTree
 funcTests =
@@ -13,7 +13,6 @@ funcTests =
         [ sumTests
         , productTests
         ]
-
 
 sumTests :: TestTree
 sumTests =
@@ -34,12 +33,12 @@ sumTests =
            in
             testCase "Sum Maybe" $ got @?= wot
         , let
-            xs :: Maybe (Sum Int)
+            xs :: Maybe (Product Int)
             xs = Nothing
             got = product xs
-            wot = 0
+            wot = 1
            in
-            testCase "Sum Maybe Nothing" $ got @?= wot
+            testCase "Product Maybe Nothing" $ got @?= wot
         ]
 
 productTests :: TestTree

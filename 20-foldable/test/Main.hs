@@ -17,20 +17,20 @@ import Four1Tests
 tests :: TestTree
 tests =
     testGroup
-        ""
-        [ funcTests
-        , minTests
-        , maxTests
+        "main"
+        [
+        constantTests
         , elemTests
-        , nullTests
-        , lengthTests
-        , toListTests
-        , toListTests
-        , constantTests
-        , twoTests
-        , threeTests
-        , three1Tests
         , four1Tests
+        , funcTests
+        , lengthTests
+        , maxTests
+        , minTests
+        , nullTests
+        , three1Tests
+        , threeTests
+        , toListTests
+        , twoTests
         ]
 
 main :: IO ()
