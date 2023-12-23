@@ -4,7 +4,6 @@ module SkiFree where
 
 import Test.Tasty.QuickCheck
 import Test.QuickCheck.Checkers
-import Control.Applicative
 
 data S n a = S (n a) a
     deriving (Eq, Show)
@@ -24,6 +23,4 @@ instance Foldable n => Foldable (S n) where
     foldMap f (S n a) = foldMap f n <> f a
 
 instance Traversable n => Traversable (S n) where
-    traverse f (S n a) = liftA2 S n1 b
-        where n1 = traverse f n
-              b = f a
+    traverse f (S n a) = S <$> traverse f n <*> f a

@@ -1,8 +1,8 @@
 module BabyStepTest (babyStepTests) where
 
+import Data.Maybe
 import Test.Tasty
 import Test.Tasty.HUnit
-import Data.Maybe
 
 babyStepTests :: TestTree
 babyStepTests =
@@ -16,30 +16,33 @@ babyStepTests =
 unitTests1 :: TestTree
 unitTests1 =
     testGroup
+        -- remove inner type constructor
         "one way"
         [ let wot :: Integer
               wot = 6
               got = sum [1, 2, 3]
            in testCase "a" $ wot @?= got
-        , let xs :: [] (Maybe Integer)
+        , let xs :: [Maybe Integer]
               xs = [Just 1, Just 2, Just 3]
               got :: [Integer]
               got = fmap sum xs
               wot = [1, 2, 3]
            in testCase "b" $ wot @?= got
         , let
-              got = (fmap . fmap) sum Just [1, 2, 3]
-              wot :: Maybe Integer
-              wot = Just 6
-           in testCase "c what in the fuck" $ wot @?= got
+            got = (fmap . fmap) sum Just [1, 2, 3]
+            wot :: Maybe Integer
+            wot = Just 6
+           in
+            testCase "c what in the fuck" $ wot @?= got
         , let
-              wot :: [] Integer
-              wot = [1, 2, 1]
-              xs = [Just 1, Just 2, Nothing]
-              f :: (Num a, Functor f, Foldable t) => f (t a) -> f a
-              f = fmap product
-              got = f xs
-           in testCase "d" $ wot @?= got
+            wot :: [Integer]
+            wot = [1, 2, 1]
+            xs = [Just 1, Just 2, Nothing]
+            f :: (Num a, Functor f, Foldable t) => f (t a) -> f a
+            f = fmap product
+            got = f xs
+           in
+            testCase "d" $ wot @?= got
         ]
 
 unitTests2 :: TestTree

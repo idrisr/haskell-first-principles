@@ -19,7 +19,7 @@ instance Foldable List where
 
 instance Traversable List where
     traverse _ Nil = pure Nil
-    traverse f (Cons a la) = Cons <$> f a <*> traverse f la
+    traverse f (Cons a b) = Cons <$> f a <*> traverse f b
 
 instance Arbitrary a => Arbitrary (List a) where
     arbitrary =

@@ -13,7 +13,7 @@ instance Foldable (Bigger a) where
     foldMap f (Bigger _ b c d) = f b <> f c <> f d
 
 instance Traversable (Bigger a) where
-    traverse f (Bigger a b c d) = Bigger a <$> f b <*> f c <*> f d
+    traverse f (Bigger a b1 b2 b3) = Bigger a <$> f b1 <*> f b2 <*> f b3
 
 instance (Arbitrary a, Arbitrary b) => Arbitrary (Bigger a b) where
     arbitrary = Bigger <$> arbitrary <*> arbitrary <*> arbitrary <*> arbitrary

@@ -26,6 +26,6 @@ instance (Eq a, Eq b) => EqProp (Big a b) where
 --
 -- Foldable
     -- use Monoid
-    --
+
 -- Traversable
     -- use Applicative
